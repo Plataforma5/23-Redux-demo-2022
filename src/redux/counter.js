@@ -1,25 +1,61 @@
-import { createReducer, createAction } from "@reduxjs/toolkit";
+import { createAction, createReducer } from "@reduxjs/toolkit";
+
+// ACTION
 
 export const increase = createAction("increase");
 export const decrease = createAction("decrease");
-export const addMany = createAction("addMany");
+export const addMultiple = createAction("addMultiple");
 
-const initialState = { value: 0 };
+// console.log("ACTION WITH PAYLOAD", addMultiple(3)); // { type: "addMultiple", payload: 3 }
 
-export const counterReducer = createReducer(initialState, {
+// REDUCER
+
+const initialState = { value: 5 };
+
+export default createReducer(initialState, {
   [increase]: (state) => {
     state.value += 1;
   },
   [decrease]: (state) => {
     state.value -= 1;
   },
-  [addMany]: (state, action) => {
-    state.value += action.payload;
+  [addMultiple]: (state, action) => {
+    const value = action.payload || 0;
+    const amount = parseInt(value, 10);
+    state.value += amount;
   },
-
-  // [addLikeToPost]: (state, action) => {
-
-  //   const post = state.posts.find((post) => post.id === action.paylod.post_id)
-  //   post.likes += 1
-  // },
+  // [addComment]: (state, action) => {
+  //   state.comments.push(action.payload)
+  // }
 });
+
+// REDUCER A MANO
+
+// export default function couterReducer(state = initialState, action) {
+//   switch (action.type) {
+//     case INCREASE:
+//       return { value: state.value + 1 };
+//     case "decrease":
+//       return { value: state.value - 1 };
+//     case "addMultiple":
+//       return { value: state.value + action.payload };
+//     default:
+//       return state;
+//   }
+// }
+
+// ACTION A MANO
+
+// function newCommentAction({ user, comment }) {
+//   return {
+//     type: "NEW_COMMENT",
+//     payload: {
+//       author: user,
+//       comment: comment,
+//       date: new Date(),
+//       likes: 0,
+//     },
+//   };
+// }
+
+// newCommentAction(user, comment)
