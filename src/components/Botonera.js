@@ -6,7 +6,7 @@ export default function Botonera({
   handleChange,
   addMultiple,
   input,
-  setFromDb,
+  setFromAPI,
 }) {
   return (
     <>
@@ -18,7 +18,7 @@ export default function Botonera({
         <input onChange={handleChange} value={input} />
         <button>Add</button>
       </form>
-      <button onClick={setFromDb}>Set value from DB</button>
+      <button onClick={setFromAPI}>Set value from API</button>
     </>
   );
 }

@@ -27,7 +27,7 @@ function App() {
     setCount(count + amount);
   };
 
-  const setFromDb = () => {
+  const setFromAPI = () => {
     fetch("/api/value")
       .then((res) => res.json())
       .then((data) => setCount(data.value));
@@ -43,7 +43,7 @@ function App() {
         handleIncrease={handleIncrease}
         addMultiple={addMultiple}
         input={input}
-        setFromDb={setFromDb}
+        setFromAPI={setFromAPI}
       />
     </div>
   );
